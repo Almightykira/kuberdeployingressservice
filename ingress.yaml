@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: ingress
+metadata:
+  name: kira
+spec: 
+  ingressClassName: nginx
+  rules:
+    - hosts: kira.com
+  http:
+    paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: php-web
+            port:
+              number: 80

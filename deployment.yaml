@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-web
+  labels:
+    app: nginx
+    env: development
+    tier: frontend
+  spec:
+    replicas: 1
+    selector:
+    matchLabels:
+      app: nginx
+      env: development
+      tier: frontend
+
+    template:
+      metadata:
+    labels:
+      app: nginx
+      env: development
+      tier: frontend
+  spec:
+    containers:
+      - name: nginx
+        image: almightykira/dockerphp:latest
+        ports:
+          containerPorts: 80
+    imagePullSecrets:
+      - name: regcred
